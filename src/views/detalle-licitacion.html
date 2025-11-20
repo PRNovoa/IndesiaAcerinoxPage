@@ -1,0 +1,515 @@
+<template id="view-detalle-licitacion">
+  <div class="min-h-screen bg-slate-50">
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-10 shadow-sm">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center gap-4">
+          <img src="./src/e6d2977a0f97fa6399023458adebf7f2c2484c6e.png" alt="Acerinox Logo" class="h-8 w-auto mr-4">
+          <button onclick="window.location.hash='#/licitaciones'" class="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-700">
+              <line x1="19" y1="12" x2="5" y2="12"/>
+              <polyline points="12 19 5 12 12 5"/>
+            </svg>
+          </button>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-1">
+              <h1 class="text-2xl font-bold text-slate-900">Detalles de la Licitación</h1>
+              <span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium border border-emerald-200">
+                Potencial Alto
+              </span>
+            </div>
+            <p class="text-slate-600">Análisis completo de la licitación y recomendaciones</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+      <div class="max-w-5xl mx-auto space-y-6" id="detalle-container">
+        <!-- Tender Title -->
+        <div class="p-6 bg-white border border-slate-200 rounded-lg">
+          <h2 class="text-2xl font-bold text-slate-900" id="tender-title">Cargando...</h2>
+        </div>
+
+        <!-- Key Information -->
+        <div class="p-6 bg-white border border-slate-200 rounded-lg">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex items-start gap-3">
+              <div class="p-3 rounded-full bg-slate-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-blue-900">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                  <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                  <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-slate-600 text-sm mb-1">Fecha</p>
+                <p class="text-slate-900 font-medium">15 de Marzo, 2024</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="p-3 rounded-full bg-slate-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-900">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-slate-600 text-sm mb-1">Tipo de Proyecto</p>
+                <p class="text-slate-900 font-medium">Infraestructura</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="p-3 rounded-full bg-slate-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-blue-900">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3" fill="white"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-slate-600 text-sm mb-1">Ubicación</p>
+                <p class="text-slate-900 font-medium">Barcelona, España</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Short Description -->
+        <div class="p-6 bg-white border border-slate-200 rounded-lg">
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600 mt-0.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 mb-2">Resumen</h3>
+              <p class="text-slate-700 leading-relaxed">Diseño y construcción de una moderna instalación de tratamiento de aguas residuales con capacidad para 100.000 m³/día, incluyendo sistemas de tratamiento biológico e infraestructura de dosificación química.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Potential Score Card -->
+        <div class="p-6 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-lg font-semibold text-slate-900 mb-1">Puntuación de Potencial</h3>
+              <p class="text-slate-600">Basado en el análisis de IA de la licitación</p>
+            </div>
+            <div class="text-right">
+              <div class="text-4xl font-bold text-emerald-700">85%</div>
+              <p class="text-emerald-600 font-medium">Alto Potencial</p>
+            </div>
+          </div>
+          <div class="w-full bg-emerald-200 rounded-full h-3">
+            <div class="bg-emerald-600 h-3 rounded-full" style="width: 85%"></div>
+          </div>
+        </div>
+
+        <!-- Basic Details -->
+        <div class="p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">Información Básica</h3>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
+                <line x1="4" y1="9" x2="20" y2="9"/>
+                <line x1="4" y1="15" x2="20" y2="15"/>
+                <line x1="10" y1="3" x2="8" y2="21"/>
+                <line x1="16" y1="3" x2="14" y2="21"/>
+              </svg>
+              <div class="flex-1 flex items-center justify-between">
+                <span class="text-slate-600">ID de Licitación</span>
+                <span class="text-slate-900 font-medium">TND-2024-00847</span>
+              </div>
+            </div>
+            <div class="border-t border-slate-100"></div>
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 3h-8v4h8V3z"/>
+              </svg>
+              <div class="flex-1 flex items-center justify-between">
+                <span class="text-slate-600">Empresa</span>
+                <span class="text-slate-900 font-medium">Aguas de Barcelona S.A.</span>
+              </div>
+            </div>
+            <div class="border-t border-slate-100"></div>
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+              <div class="flex-1 flex items-center justify-between">
+                <span class="text-slate-600">Sector</span>
+                <span class="text-slate-900 font-medium">Tratamiento de Agua y Servicios Públicos</span>
+              </div>
+            </div>
+            <div class="border-t border-slate-100"></div>
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
+                <line x1="12" y1="1" x2="12" y2="23"/>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+              <div class="flex-1 flex items-center justify-between">
+                <span class="text-slate-600">Presupuesto</span>
+                <span class="text-emerald-700 font-bold text-lg">24.500.000 €</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Description -->
+        <div class="p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">Descripción Detallada</h3>
+          <p class="text-slate-700 leading-relaxed">Este proyecto implica el diseño completo, suministro, instalación y puesta en marcha de una planta de tratamiento de aguas residuales de última generación. La instalación incorporará procesos avanzados de tratamiento biológico, sistemas de dosificación química e infraestructura de gestión de lodos. La planta debe manejar ambientes corrosivos debido al contacto constante con aguas residuales tratadas que contienen varios compuestos químicos. Todos los materiales y equipos deben cumplir con las normas ambientales de la UE y proporcionar una vida útil mínima de 25 años en entornos agresivos.</p>
+        </div>
+
+        <!-- Materials & Technical Specifications -->
+        <div class="p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">Materiales y Especificaciones Técnicas</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
+                  <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/>
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                </svg>
+                <p class="text-slate-700 font-medium">Materiales Seleccionados</p>
+              </div>
+              <div class="flex flex-wrap gap-2 pl-6">
+                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-sm">Acero Inoxidable</span>
+                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-sm">Hormigón Armado</span>
+                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-sm">Tubería HDPE</span>
+                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-sm">Acero Galvanizado</span>
+              </div>
+            </div>
+            <div class="border-t border-slate-100"></div>
+            <div class="flex items-center justify-between pl-6">
+              <p class="text-slate-700">Mención de Acero Inoxidable</p>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-600">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <span class="text-emerald-700 font-medium">Sí</span>
+              </div>
+            </div>
+            <div class="border-t border-slate-100"></div>
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              </svg>
+              <div class="flex-1 flex items-center justify-between">
+                <span class="text-slate-600">Formato de Producto Requerido</span>
+                <span class="text-slate-900 font-medium">Chapas, Tubos, Barras, Componentes fabricados a medida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Environmental Conditions -->
+        <div class="p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">Condiciones Ambientales</h3>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              <div class="flex-1 flex items-center justify-between">
+                <span class="text-slate-600">Entorno/Servicio</span>
+                <span class="text-slate-900 font-medium">Altamente Corrosivo - Tratamiento de Aguas Residuales</span>
+              </div>
+            </div>
+            <div class="border-t border-slate-100"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pl-6">
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+                <p class="text-slate-700 text-sm">Contacto con Agua de Mar</p>
+                <span class="text-slate-500 text-sm">No</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                </svg>
+                <p class="text-slate-700 text-sm">Contacto con Agua Potable</p>
+                <span class="text-slate-500 text-sm">No</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
+                  <path d="M9.5 2A2.5 2.5 0 0 0 7 4.5v15A2.5 2.5 0 0 0 9.5 22h5a2.5 2.5 0 0 0 2.5-2.5v-15A2.5 2.5 0 0 0 14.5 2h-5z"/>
+                </svg>
+                <p class="text-slate-700 text-sm">Contacto con Químicos</p>
+                <span class="text-emerald-700 text-sm font-medium">Sí</span>
+              </div>
+            </div>
+            <div class="border-t border-slate-100"></div>
+            <div class="flex items-start gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600 mt-1">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              <div class="flex-1">
+                <span class="text-slate-600">Requisitos de Corrosión</span>
+                <p class="text-slate-700 mt-1">Debe soportar niveles de pH entre 3-11, contenido de cloruros hasta 2000ppm y variaciones de temperatura de 5-35°C. Se requiere una vida útil mínima de 25 años.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Equipment & Applications -->
+        <div class="p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">Equipamiento Relacionado</h3>
+          <div class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600 mt-0.5">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+            <div class="flex-1">
+              <ul class="space-y-2">
+                <li class="flex items-center gap-2 text-slate-700">
+                  <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+                  Bombas y válvulas
+                </li>
+                <li class="flex items-center gap-2 text-slate-700">
+                  <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+                  Sistemas de tuberías
+                </li>
+                <li class="flex items-center gap-2 text-slate-700">
+                  <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+                  Tanques de almacenamiento
+                </li>
+                <li class="flex items-center gap-2 text-slate-700">
+                  <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+                  Unidades de filtración
+                </li>
+                <li class="flex items-center gap-2 text-slate-700">
+                  <div class="w-1.5 h-1.5 rounded-full bg-slate-400"></div>
+                  Equipos de dosificación química
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analysis & Recommendations -->
+        <div class="p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">Análisis y Recomendaciones</h3>
+          <div class="space-y-4">
+            <div class="p-4 rounded-lg bg-blue-50 border border-blue-100">
+              <div class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-600 mt-0.5">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+                <div>
+                  <p class="text-blue-900 font-semibold mb-2">Razón del Potencial de Acero Inoxidable</p>
+                  <p class="text-blue-700 leading-relaxed">El proyecto menciona explícitamente requisitos de acero inoxidable. La alta exposición química y las necesidades de resistencia a la corrosión se alinean perfectamente con las aplicaciones de acero inoxidable. La gran asignación presupuestaria sugiere especificaciones de materiales premium.</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 rounded-lg bg-emerald-50 border border-emerald-100">
+              <div class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-600 mt-0.5">
+                  <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+                  <path d="M9 18h6"/>
+                  <path d="M10 22h4"/>
+                </svg>
+                <div>
+                  <p class="text-emerald-900 font-semibold mb-2">Recomendación sobre el Tipo de Acero para la Empresa</p>
+                  <p class="text-emerald-700 leading-relaxed">Se recomienda AISI 316L o 316Ti para componentes estructurales principales y tuberías debido a su superior resistencia a cloruros. Considerar grados dúplex (2205) para áreas altamente tensionadas. AISI 304 aceptable para estructuras auxiliares sin contacto.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cargar detalles de la licitación desde JSON
+    (async function() {
+      try {
+        // Obtener ID de la URL
+        const hashParts = window.location.hash.split('?');
+        const urlParams = new URLSearchParams(hashParts[1] || '');
+        const tenderId = urlParams.get('id');
+        
+        if (!tenderId) {
+          console.error('ID no encontrado en URL:', window.location.hash);
+          document.getElementById('detalle-container').innerHTML = '<div class="text-center text-red-600 p-8">ID de licitación no encontrado</div>';
+          return;
+        }
+        
+        console.log('Cargando licitación:', tenderId);
+        
+        // Cargar datos del JSON
+        const response = await fetch('./src/LicitacionesJson/matching_resultados.json');
+        if (!response.ok) {
+          throw new Error('Error al cargar JSON: ' + response.status);
+        }
+        const data = await response.json();
+        const licitacion = data.resultados[tenderId];
+        
+        if (!licitacion) {
+          console.error('Licitación no encontrada:', tenderId, 'IDs disponibles:', Object.keys(data.resultados));
+          document.getElementById('detalle-container').innerHTML = '<div class="text-center text-red-600 p-8">Licitación no encontrada</div>';
+          return;
+        }
+        
+        console.log('Licitación cargada:', licitacion);
+        
+        // Calcular valores
+        const score = Math.round(licitacion.score_potencial_inox * 100);
+        const scoreClass = score >= 70 ? 'emerald' : 'orange';
+        const nivel = licitacion.nivel_potencial_inox || 'bajo';
+        const nivelText = nivel.charAt(0).toUpperCase() + nivel.slice(1);
+        const nivelBadgeClass = nivel === 'alto' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' : nivel === 'medio' ? 'bg-orange-100 text-orange-700 border-orange-200' : 'bg-slate-100 text-slate-700 border-slate-200';
+        const region = licitacion.region || licitacion.pais || 'España';
+        const sector = licitacion.sector || 'Sector no especificado';
+        const materialesMencionados = licitacion.materiales_mencionados || [];
+        const materialesInox = materialesMencionados.filter(m => m.toLowerCase().includes('inoxidable') || m.toLowerCase().includes('316') || m.toLowerCase().includes('304'));
+        const tieneInox = materialesInox.length > 0;
+        
+        // Actualizar título de la página
+        document.getElementById('tender-title').textContent = licitacion.titulo_licitacion;
+        
+        // Actualizar badge de potencial en el header
+        const headerBadge = document.querySelector('header span.px-3');
+        if (headerBadge) {
+          headerBadge.className = `px-3 py-1 ${nivelBadgeClass} rounded-full text-sm font-medium border`;
+          headerBadge.textContent = `Potencial ${nivelText}`;
+        }
+        
+        // Actualizar información clave
+        const keyInfoSection = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-3');
+        if (keyInfoSection) {
+          keyInfoSection.querySelector('p.text-slate-900.font-medium').textContent = data.metadata.fecha_generacion || '2025-11-20';
+          keyInfoSection.querySelectorAll('p.text-slate-900.font-medium')[1].textContent = sector;
+          keyInfoSection.querySelectorAll('p.text-slate-900.font-medium')[2].textContent = region;
+        }
+        
+        // Actualizar resumen
+        const resumenP = document.querySelector('.flex.items-start.gap-3 p.text-slate-700.leading-relaxed');
+        if (resumenP) {
+          resumenP.textContent = licitacion.descripcion_resumida;
+        }
+        
+        // Actualizar puntuación de potencial
+        const scoreDiv = document.querySelector('.text-4xl.font-bold');
+        const scoreLabelP = document.querySelector('.text-emerald-600.font-medium, .text-orange-600.font-medium');
+        const scoreBar = document.querySelector('.bg-emerald-600, .bg-orange-600');
+        
+        if (scoreDiv) {
+          scoreDiv.className = `text-4xl font-bold text-${scoreClass}-700`;
+          scoreDiv.textContent = `${score}%`;
+        }
+        if (scoreLabelP) {
+          scoreLabelP.className = `text-${scoreClass}-600 font-medium`;
+          scoreLabelP.textContent = `${nivelText} Potencial`;
+        }
+        if (scoreBar) {
+          scoreBar.className = `bg-${scoreClass}-600 h-3 rounded-full`;
+          scoreBar.style.width = `${score}%`;
+        }
+        
+        // Actualizar card de potencial
+        const potencialCard = document.querySelector('.bg-gradient-to-br');
+        if (potencialCard) {
+          potencialCard.className = score >= 70 ? 
+            'p-6 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg' :
+            'p-6 bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-lg';
+        }
+        
+        // Actualizar información básica (simplificada porque no tenemos todos los datos)
+        const basicDetails = document.querySelectorAll('.flex.items-center.justify-between span.text-slate-900.font-medium');
+        if (basicDetails.length >= 4) {
+          basicDetails[0].textContent = tenderId.toUpperCase();
+          basicDetails[1].textContent = 'Organismo público';
+          basicDetails[2].textContent = sector;
+          basicDetails[3].textContent = 'Consultar documentación';
+        }
+        
+        // Actualizar descripción detallada - buscar por texto del h3
+        const allH3 = document.querySelectorAll('h3');
+        let detailP = null;
+        for (let h3 of allH3) {
+          if (h3.textContent.includes('Descripción Detallada')) {
+            detailP = h3.nextElementSibling;
+            break;
+          }
+        }
+        if (detailP && detailP.tagName === 'P') {
+          detailP.textContent = licitacion.descripcion_resumida;
+        }
+        
+        // Actualizar materiales mencionados
+        const materialesContainer = document.querySelector('.flex.flex-wrap.gap-2.pl-6');
+        if (materialesContainer && materialesMencionados.length > 0) {
+          materialesContainer.innerHTML = materialesMencionados.slice(0, 10).map(mat => 
+            `<span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-sm">${mat}</span>`
+          ).join('');
+        }
+        
+        // Actualizar mención de acero inoxidable - buscar el span que dice "Mención de Acero Inoxidable"
+        const allDivs = document.querySelectorAll('.flex.items-center.justify-between');
+        let inoxMentionContainer = null;
+        for (let div of allDivs) {
+          const p = div.querySelector('p.text-slate-700');
+          if (p && p.textContent.includes('Mención de Acero Inoxidable')) {
+            inoxMentionContainer = div.querySelector('.flex.items-center.gap-2');
+            break;
+          }
+        }
+        
+        if (inoxMentionContainer) {
+          const spanElement = inoxMentionContainer.querySelector('span');
+          if (spanElement) {
+            if (tieneInox) {
+              spanElement.className = 'text-emerald-700 font-medium';
+              spanElement.textContent = 'Sí';
+              const svgContainer = inoxMentionContainer.querySelector('svg');
+              if (svgContainer && svgContainer.parentElement) {
+                svgContainer.parentElement.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-600">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>`;
+              }
+            } else {
+              spanElement.className = 'text-slate-700 font-medium';
+              spanElement.textContent = 'No explícitamente';
+            }
+          }
+        }
+        
+        // Actualizar análisis y recomendaciones
+        const razonPotencial = document.querySelector('.bg-blue-50 p.text-blue-700.leading-relaxed');
+        if (razonPotencial) {
+          razonPotencial.textContent = `Esta licitación tiene un potencial ${nivel} para acero inoxidable (${score}%). ${tieneInox ? 'Se menciona explícitamente acero inoxidable en los materiales.' : 'El sector y las condiciones del proyecto sugieren posibles aplicaciones de acero inoxidable.'} Sector: ${sector}.`;
+        }
+        
+        const recomendacion = document.querySelector('.bg-emerald-50 p.text-emerald-700.leading-relaxed');
+        if (recomendacion) {
+          if (tieneInox && score >= 70) {
+            recomendacion.textContent = `Alta prioridad. Se recomienda analizar los grados específicos mencionados y preparar una propuesta técnica detallada. Materiales identificados: ${materialesInox.join(', ')}.`;
+          } else if (score >= 40) {
+            recomendacion.textContent = `Potencial medio. Evaluar si las condiciones del proyecto (corrosión, higiene, estética) justifican proponer soluciones en acero inoxidable como alternativa superior.`;
+          } else {
+            recomendacion.textContent = `Potencial bajo. Monitorear para futuras fases o proyectos relacionados. El sector ${sector} puede ofrecer oportunidades indirectas.`;
+          }
+        }
+        
+      } catch (error) {
+        console.error('Error cargando detalle:', error);
+        document.getElementById('detalle-container').innerHTML = '<div class="text-center text-red-600 p-8">Error cargando detalles de la licitación</div>';
+      }
+    })();
+  </script>
+</template>
