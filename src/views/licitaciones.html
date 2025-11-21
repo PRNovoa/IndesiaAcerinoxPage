@@ -1,28 +1,28 @@
 <template id="view-licitaciones">
   <div class="min-h-screen bg-gray-50">
     <!-- Acerinox Header -->
-    <header class="bg-white border-b border-gray-200 py-6">
-      <div class="container mx-auto px-6 max-w-4xl">
-        <img src="./src/e6d2977a0f97fa6399023458adebf7f2c2484c6e.png" alt="Acerinox Logo" class="h-10 w-auto">
+    <header class="bg-white border-b border-gray-200 py-4 md:py-6">
+      <div class="container mx-auto px-4 sm:px-6 max-w-4xl">
+        <img src="./src/e6d2977a0f97fa6399023458adebf7f2c2484c6e.png" alt="Acerinox Logo" class="h-8 sm:h-10 w-auto">
       </div>
     </header>
 
-    <div class="container mx-auto px-6 py-8 max-w-4xl">
-      <div class="mb-6">
-        <button onclick="window.location.hash='#/filtros'" class="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4">
+    <div class="container mx-auto px-4 sm:px-6 py-6 md:py-8 max-w-4xl">
+      <div class="mb-4 md:mb-6">
+        <button onclick="window.location.hash='#/filtros'" class="flex items-center gap-2 text-gray-600 hover:text-gray-900 hover:translate-x-[-4px] transition-all duration-200 mb-3 md:mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"/>
             <polyline points="12 19 5 12 12 5"/>
           </svg>
         </button>
-        <div class="flex items-center justify-between">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 class="text-2xl font-bold text-gray-900 mb-1">Licitaciones</h1>
-            <p class="text-sm text-gray-600">
+            <h1 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Licitaciones</h1>
+            <p class="text-xs sm:text-sm text-gray-600">
               <span id="tenders-count">8</span> licitaciones ordenadas por relevancia
             </p>
           </div>
-          <button onclick="window.location.hash='#/filtros'" class="px-4 py-2 border border-gray-300 text-gray-700 hover:bg-gray-50 rounded-lg flex items-center gap-2 transition-colors text-sm">
+          <button onclick="window.location.hash='#/filtros'" class="px-3 py-2 sm:px-4 border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:shadow-md hover:scale-105 active:scale-95 rounded-lg flex items-center justify-center gap-2 transition-all duration-200 text-xs sm:text-sm whitespace-nowrap">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
             </svg>
@@ -40,18 +40,106 @@
   <script>
     // Cargar y renderizar licitaciones desde JSON
     (async function() {
+      // Scroll to top when page loads
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      
       try {
+        // Get filter from URL
+        const hashParts = window.location.hash.split('?');
+        const urlParams = new URLSearchParams(hashParts[1] || '');
+        const activeFilter = urlParams.get('filter') || 'all';
+        
         const response = await fetch('./src/LicitacionesJson/matching_resultados.json');
         const data = await response.json();
         const resultados = data.resultados;
         
-        // Convertir a array y ordenar por score_potencial_inox descendente
-        const licitaciones = Object.entries(resultados)
-          .map(([id, lic]) => ({ id, ...lic }))
-          .sort((a, b) => b.score_potencial_inox - a.score_potencial_inox);
+        // Convertir a array y asignar fechas y distancias
+        const today = new Date();
+        let licitaciones = Object.entries(resultados)
+          .map(([id, lic], index) => {
+            // Generate consistent date for each tender
+            const daysOffset = 5 + (index * 3) % 60; // Creates dates from 5 to 65 days
+            const fecha = new Date(today.getTime() + daysOffset * 24 * 60 * 60 * 1000);
+            const fechaStr = fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+            
+            // Calculate distance from Madrid (simulated based on location)
+            const region = (lic.region || '').toLowerCase();
+            const pais = (lic.pais || '').toLowerCase();
+            let distanceFromMadrid = 1000; // Default far distance
+            
+            if (region.includes('madrid')) distanceFromMadrid = 0;
+            else if (region.includes('toledo') || region.includes('segovia') || region.includes('ávila') || region.includes('avila')) distanceFromMadrid = 100;
+            else if (region.includes('barcelona') || region.includes('valencia') || region.includes('zaragoza')) distanceFromMadrid = 300;
+            else if (region.includes('sevilla') || region.includes('málaga') || region.includes('malaga')) distanceFromMadrid = 400;
+            else if (region.includes('bilbao') || region.includes('santiago')) distanceFromMadrid = 500;
+            else if (pais.includes('españa') || pais.includes('spain') || pais === 'es') distanceFromMadrid = 350;
+            
+            return { 
+              id, 
+              ...lic, 
+              fecha, 
+              fechaStr,
+              distanceFromMadrid 
+            };
+          });
         
-        // Actualizar contador
-        document.getElementById('tenders-count').textContent = licitaciones.length;
+        // Apply filters based on selection
+        if (activeFilter !== 'all') {
+          licitaciones = licitaciones.filter(lic => {
+            const score = Math.round(lic.score_potencial_inox * 100);
+            const nivel = lic.nivel_potencial_inox || 'bajo';
+            
+            switch(activeFilter) {
+              case 'opportunity':
+                // Filter by high potential (score >= 70)
+                return score >= 70;
+              case 'date':
+                // Show all without potential filtering (will be sorted by date in future)
+                return true;
+              case 'volume':
+                // Filter by high volume potential (alto nivel)
+                return nivel === 'alto';
+              case 'client':
+                // Filter by existing client potential (medio or alto)
+                return nivel === 'medio' || nivel === 'alto';
+              case 'location':
+                // Filter by Spain location - very inclusive
+                const region = (lic.region || '').toLowerCase();
+                const pais = (lic.pais || '').toLowerCase();
+                // Show all that have some Spanish reference or are empty (assume Spain)
+                return !pais || pais === '' || pais.includes('españa') || pais.includes('spain') || 
+                       pais.includes('espana') || pais === 'es' || pais === 'españa' ||
+                       region.includes('españa') || region.includes('spain') || region.includes('madrid') || 
+                       region.includes('barcelona') || region.includes('valencia') || region.includes('sevilla') ||
+                       region.includes('bilbao') || region.includes('málaga') || region.includes('zaragoza') ||
+                       region !== '';
+              default:
+                return true;
+            }
+          });
+        }
+        
+        // Sort differently based on filter
+        if (activeFilter === 'date') {
+          // For date filter, sort from closest to today to furthest
+          licitaciones.sort((a, b) => a.fecha.getTime() - b.fecha.getTime());
+        } else if (activeFilter === 'location') {
+          // For location filter, sort by distance from Madrid (closest first)
+          licitaciones.sort((a, b) => a.distanceFromMadrid - b.distanceFromMadrid);
+        } else {
+          // For all other filters, sort by score_potencial_inox descendente
+          licitaciones.sort((a, b) => b.score_potencial_inox - a.score_potencial_inox);
+        }
+        
+        // Actualizar contador y mensaje
+        const countElement = document.getElementById('tenders-count');
+        countElement.textContent = licitaciones.length;
+        
+        // Update filter description if filtered
+        if (activeFilter !== 'all' && licitaciones.length === 0) {
+          document.getElementById('tenders-list').innerHTML = '<div class="text-center text-gray-600 p-8 bg-white rounded-lg border border-gray-200">No se encontraron licitaciones con los filtros seleccionados.</div>';
+          return;
+        }
         
         // Renderizar tarjetas
         const tendersList = document.getElementById('tenders-list');
@@ -86,19 +174,16 @@
           const region = capitalize(lic.region || lic.pais || 'España');
           const sector = capitalize(lic.sector || 'Sector no especificado');
           
-          // Crear una fecha ficticia para mostrar (puedes ajustar esto)
-          const today = new Date();
-          const daysOffset = Math.floor(Math.random() * 30) + 5;
-          const fecha = new Date(today.getTime() + daysOffset * 24 * 60 * 60 * 1000);
-          const fechaStr = fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+          // Use stored date or generate one
+          const fechaStr = lic.fechaStr || 'Fecha no disponible';
           
           return `
-            <div class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-sm transition-shadow cursor-pointer tender-card" data-tender-id="${lic.id}">
-              <div class="flex items-start justify-between gap-6">
+            <div class="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 hover:shadow-lg hover:border-gray-300 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer tender-card" data-tender-id="${lic.id}">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-6">
                 <div class="flex-1 min-w-0">
-                  <h3 class="text-lg font-semibold text-gray-900 mb-3 leading-tight">${titulo}</h3>
+                  <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3 leading-tight">${titulo}</h3>
                   
-                  <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500 mb-4">
+                  <div class="flex flex-wrap items-center gap-x-3 sm:gap-x-5 gap-y-2 text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">
                     <div class="flex items-center gap-1.5">
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -106,28 +191,28 @@
                         <line x1="8" y1="2" x2="8" y2="6"/>
                         <line x1="3" y1="10" x2="21" y2="10"/>
                       </svg>
-                      <span>${fechaStr}</span>
+                      <span class="truncate">${fechaStr}</span>
                     </div>
                     <div class="flex items-center gap-1.5">
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                         <circle cx="9" cy="7" r="4"/>
                       </svg>
-                      <span>${sector}</span>
+                      <span class="truncate">${sector}</span>
                     </div>
                     <div class="flex items-center gap-1.5">
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                         <circle cx="12" cy="10" r="3"/>
                       </svg>
-                      <span>${region}</span>
+                      <span class="truncate">${region}</span>
                     </div>
                   </div>
                   
-                  <p class="text-sm text-gray-600 leading-relaxed">${descripcion}</p>
+                  <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">${descripcion}</p>
                 </div>
                 
-                <div class="flex flex-col items-end gap-3 flex-shrink-0">
+                <div class="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-3 flex-shrink-0 sm:ml-4">
                   <div class="flex items-center gap-1.5">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${scoreClass}">
                       <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -136,7 +221,7 @@
                   </div>
                   <div class="text-right">
                     <div class="text-xs text-gray-500 mb-1.5">Relevancia</div>
-                    <div class="w-28 bg-gray-200 rounded-full h-2">
+                    <div class="w-20 sm:w-28 bg-gray-200 rounded-full h-2">
                       <div class="${barColor} h-2 rounded-full" style="width: ${score}%"></div>
                     </div>
                   </div>
@@ -151,6 +236,8 @@
           card.addEventListener('click', function() {
             const tenderId = this.getAttribute('data-tender-id');
             window.location.hash = '#/detalle-licitacion?id=' + tenderId;
+            // Scroll to top when navigating
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           });
         });
         

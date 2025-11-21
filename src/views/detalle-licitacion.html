@@ -2,41 +2,50 @@
   <div class="min-h-screen bg-slate-50">
     <!-- Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-10 shadow-sm">
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex items-center gap-4">
-          <img src="./src/e6d2977a0f97fa6399023458adebf7f2c2484c6e.png" alt="Acerinox Logo" class="h-8 w-auto mr-4">
-          <button onclick="window.location.hash='#/licitaciones'" class="p-2 hover:bg-slate-100 rounded-lg transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-700">
+      <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+        <div class="flex items-start sm:items-center gap-2 sm:gap-4">
+          <img src="./src/e6d2977a0f97fa6399023458adebf7f2c2484c6e.png" alt="Acerinox Logo" class="h-6 sm:h-8 w-auto mr-2 sm:mr-4">
+          <button onclick="window.location.hash='#/licitaciones'" class="p-1.5 sm:p-2 hover:bg-slate-100 hover:scale-110 active:scale-95 rounded-lg transition-all duration-200 flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-slate-700 sm:w-5 sm:h-5">
               <line x1="19" y1="12" x2="5" y2="12"/>
               <polyline points="12 19 5 12 12 5"/>
             </svg>
           </button>
-          <div class="flex-1">
-            <div class="flex items-center gap-3 mb-1">
-              <h1 class="text-2xl font-bold text-slate-900">Detalles de la Licitación</h1>
-              <span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium border border-emerald-200">
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-1">
+              <h1 class="text-lg sm:text-2xl font-bold text-slate-900 truncate">Detalles de la Licitación</h1>
+              <span class="px-2 sm:px-3 py-0.5 sm:py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm font-medium border border-emerald-200 self-start">
                 Potencial Alto
               </span>
             </div>
-            <p class="text-slate-600">Análisis completo de la licitación y recomendaciones</p>
+            <p class="text-xs sm:text-base text-slate-600 hidden sm:block">Análisis completo de la licitación y recomendaciones</p>
           </div>
         </div>
       </div>
     </header>
 
-    <div class="container mx-auto px-6 py-8">
-      <div class="max-w-5xl mx-auto space-y-6" id="detalle-container">
+    <div class="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
+      <div class="max-w-5xl mx-auto space-y-4 sm:space-y-6" id="detalle-container">
         <!-- Tender Title -->
-        <div class="p-6 bg-white border border-slate-200 rounded-lg">
-          <h2 class="text-2xl font-bold text-slate-900" id="tender-title">Cargando...</h2>
+        <div class="p-4 sm:p-6 bg-white border border-slate-200 rounded-lg shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-3">
+            <h2 class="text-lg sm:text-2xl font-bold text-slate-900 flex-1" id="tender-title">Cargando...</h2>
+            <span class="px-3 py-1.5 bg-blue-50 text-blue-700 border border-blue-200 rounded-lg text-xs sm:text-sm font-medium flex items-center gap-2 self-start">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0">
+                <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/>
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              </svg>
+              <span id="material-badge">acero inoxidable 316L</span>
+            </span>
+          </div>
         </div>
 
         <!-- Key Information -->
-        <div class="p-6 bg-white border border-slate-200 rounded-lg">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-4 sm:p-6 bg-gradient-to-br from-white to-slate-50 border border-slate-200 rounded-lg shadow-sm">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <div class="flex items-start gap-3">
-              <div class="p-3 rounded-full bg-slate-100">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-blue-900">
+              <div class="p-2 sm:p-3 rounded-full bg-blue-100 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-blue-700">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                   <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
                   <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
@@ -44,75 +53,77 @@
                 </svg>
               </div>
               <div>
-                <p class="text-slate-600 text-sm mb-1">Fecha</p>
-                <p class="text-slate-900 font-medium">15 de Marzo, 2024</p>
+                <p class="text-slate-600 text-xs sm:text-sm mb-1">Fecha</p>
+                <p class="text-slate-900 font-medium text-sm sm:text-base">15 de Marzo, 2024</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <div class="p-3 rounded-full bg-slate-100">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-900">
+              <div class="p-2 sm:p-3 rounded-full bg-blue-100 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-blue-700 sm:w-6 sm:h-6">
                   <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
                   <line x1="8" y1="21" x2="16" y2="21"/>
                   <line x1="12" y1="17" x2="12" y2="21"/>
                 </svg>
               </div>
               <div>
-                <p class="text-slate-600 text-sm mb-1">Tipo de Proyecto</p>
-                <p class="text-slate-900 font-medium">Infraestructura</p>
+                <p class="text-slate-600 text-xs sm:text-sm mb-1">Tipo de Proyecto</p>
+                <p class="text-slate-900 font-medium text-sm sm:text-base">Infraestructura</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
-              <div class="p-3 rounded-full bg-slate-100">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-blue-900">
+              <div class="p-2 sm:p-3 rounded-full bg-blue-100 flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-blue-700 sm:w-6 sm:h-6">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                   <circle cx="12" cy="10" r="3" fill="white"/>
                 </svg>
               </div>
               <div>
-                <p class="text-slate-600 text-sm mb-1">Ubicación</p>
-                <p class="text-slate-900 font-medium">Barcelona, España</p>
+                <p class="text-slate-600 text-xs sm:text-sm mb-1">Ubicación</p>
+                <p class="text-slate-900 font-medium text-sm sm:text-base">Barcelona, España</p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Short Description -->
-        <div class="p-6 bg-white border border-slate-200 rounded-lg">
+        <div class="p-4 sm:p-6 bg-white border border-slate-200 rounded-lg shadow-sm">
           <div class="flex items-start gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600 mt-0.5">
+            <div class="p-2 rounded-lg bg-slate-100 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600 sm:w-5 sm:h-5">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
               <polyline points="14 2 14 8 20 8"/>
               <line x1="16" y1="13" x2="8" y2="13"/>
               <line x1="16" y1="17" x2="8" y2="17"/>
               <polyline points="10 9 9 9 8 9"/>
-            </svg>
+              </svg>
+            </div>
             <div>
-              <h3 class="text-lg font-semibold text-slate-900 mb-2">Resumen</h3>
-              <p class="text-slate-700 leading-relaxed">Diseño y construcción de una moderna instalación de tratamiento de aguas residuales con capacidad para 100.000 m³/día, incluyendo sistemas de tratamiento biológico e infraestructura de dosificación química.</p>
+              <h3 class="text-base sm:text-lg font-semibold text-slate-900 mb-2">Resumen</h3>
+              <p class="text-sm sm:text-base text-slate-700 leading-relaxed">Diseño y construcción de una moderna instalación de tratamiento de aguas residuales con capacidad para 100.000 m³/día, incluyendo sistemas de tratamiento biológico e infraestructura de dosificación química.</p>
             </div>
           </div>
         </div>
 
         <!-- Potential Score Card -->
-        <div class="p-6 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg">
-          <div class="flex items-center justify-between mb-4">
-            <div>
-              <h3 class="text-lg font-semibold text-slate-900 mb-1">Puntuación de Potencial</h3>
-              <p class="text-slate-600">Basado en el análisis de IA de la licitación</p>
+        <div class="p-4 sm:p-6 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4">
+            <div class="flex-1">
+              <h3 class="text-base sm:text-lg font-semibold text-slate-900 mb-1">Puntuación de Potencial</h3>
+              <p class="text-xs sm:text-base text-slate-600">Basado en el análisis de IA de la licitación</p>
             </div>
-            <div class="text-right">
-              <div class="text-4xl font-bold text-emerald-700">85%</div>
-              <p class="text-emerald-600 font-medium">Alto Potencial</p>
+            <div class="text-left sm:text-right">
+              <div id="score-percentage" class="text-3xl sm:text-4xl font-bold text-emerald-700">85%</div>
+              <p id="score-label" class="text-sm sm:text-base text-emerald-600 font-medium">Alto Potencial</p>
             </div>
           </div>
-          <div class="w-full bg-emerald-200 rounded-full h-3">
-            <div class="bg-emerald-600 h-3 rounded-full" style="width: 85%"></div>
+          <div id="score-bar-bg" class="w-full bg-emerald-200 rounded-full h-2 sm:h-3">
+            <div id="score-bar" class="bg-emerald-600 h-2 sm:h-3 rounded-full" style="width: 85%"></div>
           </div>
         </div>
 
         <!-- Basic Details -->
-        <div class="p-6 bg-white border border-slate-200 rounded-lg">
-          <h3 class="text-lg font-semibold text-slate-900 mb-4">Información Básica</h3>
+        <div class="p-4 sm:p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-base sm:text-lg font-semibold text-slate-900 mb-3 sm:mb-4">Información Básica</h3>
           <div class="space-y-4">
             <div class="flex items-center gap-3">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
@@ -163,14 +174,14 @@
         </div>
 
         <!-- Detailed Description -->
-        <div class="p-6 bg-white border border-slate-200 rounded-lg">
-          <h3 class="text-lg font-semibold text-slate-900 mb-4">Descripción Detallada</h3>
-          <p class="text-slate-700 leading-relaxed">Este proyecto implica el diseño completo, suministro, instalación y puesta en marcha de una planta de tratamiento de aguas residuales de última generación. La instalación incorporará procesos avanzados de tratamiento biológico, sistemas de dosificación química e infraestructura de gestión de lodos. La planta debe manejar ambientes corrosivos debido al contacto constante con aguas residuales tratadas que contienen varios compuestos químicos. Todos los materiales y equipos deben cumplir con las normas ambientales de la UE y proporcionar una vida útil mínima de 25 años en entornos agresivos.</p>
+        <div class="p-4 sm:p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-base sm:text-lg font-semibold text-slate-900 mb-3 sm:mb-4">Descripción Detallada</h3>
+          <p class="text-sm sm:text-base text-slate-700 leading-relaxed">Este proyecto implica el diseño completo, suministro, instalación y puesta en marcha de una planta de tratamiento de aguas residuales de última generación. La instalación incorporará procesos avanzados de tratamiento biológico, sistemas de dosificación química e infraestructura de gestión de lodos. La planta debe manejar ambientes corrosivos debido al contacto constante con aguas residuales tratadas que contienen varios compuestos químicos. Todos los materiales y equipos deben cumplir con las normas ambientales de la UE y proporcionar una vida útil mínima de 25 años en entornos agresivos.</p>
         </div>
 
         <!-- Materials & Technical Specifications -->
-        <div class="p-6 bg-white border border-slate-200 rounded-lg">
-          <h3 class="text-lg font-semibold text-slate-900 mb-4">Materiales y Especificaciones Técnicas</h3>
+        <div class="p-4 sm:p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-base sm:text-lg font-semibold text-slate-900 mb-3 sm:mb-4">Materiales y Especificaciones Técnicas</h3>
           <div class="space-y-4">
             <div>
               <div class="flex items-center gap-2 mb-3">
@@ -181,22 +192,22 @@
                 <p class="text-slate-700 font-medium">Materiales Seleccionados</p>
               </div>
               <div class="flex flex-wrap gap-2 pl-6">
-                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-sm">Acero Inoxidable</span>
-                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-sm">Hormigón Armado</span>
-                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-sm">Tubería HDPE</span>
-                <span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-sm">Acero Galvanizado</span>
+                <span class="px-3 py-1.5 bg-blue-50 border border-blue-200 text-blue-700 rounded-md text-sm font-medium">Acero Inoxidable</span>
+                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-md text-sm">Hormigón Armado</span>
+                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-md text-sm">Tubería HDPE</span>
+                <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-md text-sm">Acero Galvanizado</span>
               </div>
             </div>
             <div class="border-t border-slate-100"></div>
-            <div class="flex items-center justify-between pl-6">
-              <p class="text-slate-700">Mención de Acero Inoxidable</p>
-              <div class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-600">
+            <div class="flex items-center justify-between pl-6 bg-emerald-50 -mx-2 px-4 py-3 rounded-lg">
+              <p class="text-slate-700 font-medium flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-600">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                   <polyline points="22 4 12 14.01 9 11.01"/>
                 </svg>
-                <span class="text-emerald-700 font-medium">Sí</span>
-              </div>
+                Mención de Acero Inoxidable
+              </p>
+              <span class="px-3 py-1 bg-emerald-100 text-emerald-700 border border-emerald-200 rounded-full text-sm font-semibold">Sí</span>
             </div>
             <div class="border-t border-slate-100"></div>
             <div class="flex items-center gap-3">
@@ -212,8 +223,8 @@
         </div>
 
         <!-- Environmental Conditions -->
-        <div class="p-6 bg-white border border-slate-200 rounded-lg">
-          <h3 class="text-lg font-semibold text-slate-900 mb-4">Condiciones Ambientales</h3>
+        <div class="p-4 sm:p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-base sm:text-lg font-semibold text-slate-900 mb-3 sm:mb-4">Condiciones Ambientales</h3>
           <div class="space-y-4">
             <div class="flex items-center gap-3">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
@@ -225,7 +236,7 @@
               </div>
             </div>
             <div class="border-t border-slate-100"></div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pl-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 pl-4 sm:pl-6">
               <div class="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600">
                   <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
@@ -264,8 +275,8 @@
         </div>
 
         <!-- Equipment & Applications -->
-        <div class="p-6 bg-white border border-slate-200 rounded-lg">
-          <h3 class="text-lg font-semibold text-slate-900 mb-4">Equipamiento Relacionado</h3>
+        <div class="p-4 sm:p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-base sm:text-lg font-semibold text-slate-900 mb-3 sm:mb-4">Equipamiento Relacionado</h3>
           <div class="flex items-start gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-slate-600 mt-0.5">
               <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
@@ -298,8 +309,8 @@
         </div>
 
         <!-- Analysis & Recommendations -->
-        <div class="p-6 bg-white border border-slate-200 rounded-lg">
-          <h3 class="text-lg font-semibold text-slate-900 mb-4">Análisis y Recomendaciones</h3>
+        <div class="p-4 sm:p-6 bg-white border border-slate-200 rounded-lg">
+          <h3 class="text-base sm:text-lg font-semibold text-slate-900 mb-3 sm:mb-4">Análisis y Recomendaciones</h3>
           <div class="space-y-4">
             <div class="p-4 rounded-lg bg-blue-50 border border-blue-100">
               <div class="flex items-start gap-3">
@@ -336,6 +347,9 @@
   <script>
     // Cargar detalles de la licitación desde JSON
     (async function() {
+      // Scroll to top when page loads
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      
       try {
         // Obtener ID de la URL
         const hashParts = window.location.hash.split('?');
@@ -368,10 +382,10 @@
         
         // Calcular valores
         const score = Math.round(licitacion.score_potencial_inox * 100);
-        const scoreClass = score >= 70 ? 'emerald' : 'orange';
+        const scoreClass = score >= 70 ? 'emerald' : 'amber';
         const nivel = licitacion.nivel_potencial_inox || 'bajo';
         const nivelText = nivel.charAt(0).toUpperCase() + nivel.slice(1);
-        const nivelBadgeClass = nivel === 'alto' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' : nivel === 'medio' ? 'bg-orange-100 text-orange-700 border-orange-200' : 'bg-slate-100 text-slate-700 border-slate-200';
+        const nivelBadgeClass = nivel === 'alto' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' : nivel === 'medio' ? 'bg-amber-100 text-amber-700 border-amber-200' : 'bg-slate-100 text-slate-700 border-slate-200';
         const region = licitacion.region || licitacion.pais || 'España';
         const sector = licitacion.sector || 'Sector no especificado';
         const materialesMencionados = licitacion.materiales_mencionados || [];
@@ -389,51 +403,58 @@
         }
         
         // Actualizar información clave
-        const keyInfoSection = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-3');
+        const keyInfoSection = document.querySelector('.grid.grid-cols-1');
         if (keyInfoSection) {
-          keyInfoSection.querySelector('p.text-slate-900.font-medium').textContent = data.metadata.fecha_generacion || '2025-11-20';
-          keyInfoSection.querySelectorAll('p.text-slate-900.font-medium')[1].textContent = sector;
-          keyInfoSection.querySelectorAll('p.text-slate-900.font-medium')[2].textContent = region;
+          const fontMediumElements = keyInfoSection.querySelectorAll('p.text-slate-900.font-medium');
+          if (fontMediumElements.length >= 3) {
+            fontMediumElements[0].textContent = data.metadata?.fecha_generacion || '2025-11-20';
+            fontMediumElements[1].textContent = sector;
+            fontMediumElements[2].textContent = region;
+          }
         }
         
         // Actualizar resumen
         const resumenP = document.querySelector('.flex.items-start.gap-3 p.text-slate-700.leading-relaxed');
-        if (resumenP) {
+        if (resumenP && licitacion.descripcion_resumida) {
           resumenP.textContent = licitacion.descripcion_resumida;
         }
         
         // Actualizar puntuación de potencial
-        const scoreDiv = document.querySelector('.text-4xl.font-bold');
-        const scoreLabelP = document.querySelector('.text-emerald-600.font-medium, .text-orange-600.font-medium');
-        const scoreBar = document.querySelector('.bg-emerald-600, .bg-orange-600');
+        const scoreDiv = document.getElementById('score-percentage');
+        const scoreLabelP = document.getElementById('score-label');
+        const scoreBar = document.getElementById('score-bar');
+        const scoreBarBg = document.getElementById('score-bar-bg');
         
         if (scoreDiv) {
-          scoreDiv.className = `text-4xl font-bold text-${scoreClass}-700`;
+          scoreDiv.className = `text-3xl sm:text-4xl font-bold text-${scoreClass}-700`;
           scoreDiv.textContent = `${score}%`;
         }
         if (scoreLabelP) {
-          scoreLabelP.className = `text-${scoreClass}-600 font-medium`;
+          scoreLabelP.className = `text-sm sm:text-base text-${scoreClass}-600 font-medium`;
           scoreLabelP.textContent = `${nivelText} Potencial`;
         }
         if (scoreBar) {
-          scoreBar.className = `bg-${scoreClass}-600 h-3 rounded-full`;
+          scoreBar.className = `bg-${scoreClass}-600 h-2 sm:h-3 rounded-full`;
           scoreBar.style.width = `${score}%`;
+        }
+        if (scoreBarBg) {
+          scoreBarBg.className = `w-full bg-${scoreClass}-200 rounded-full h-2 sm:h-3`;
         }
         
         // Actualizar card de potencial
         const potencialCard = document.querySelector('.bg-gradient-to-br');
         if (potencialCard) {
           potencialCard.className = score >= 70 ? 
-            'p-6 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg' :
-            'p-6 bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-lg';
+            'p-4 sm:p-6 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 rounded-lg shadow-sm' :
+            'p-4 sm:p-6 bg-gradient-to-br from-amber-50 to-yellow-50 border border-amber-200 rounded-lg shadow-sm';
         }
         
         // Actualizar información básica (simplificada porque no tenemos todos los datos)
         const basicDetails = document.querySelectorAll('.flex.items-center.justify-between span.text-slate-900.font-medium');
-        if (basicDetails.length >= 4) {
-          basicDetails[0].textContent = tenderId.toUpperCase();
+        if (basicDetails && basicDetails.length >= 4) {
+          basicDetails[0].textContent = (tenderId || 'N/A').toUpperCase();
           basicDetails[1].textContent = 'Organismo público';
-          basicDetails[2].textContent = sector;
+          basicDetails[2].textContent = sector || 'No especificado';
           basicDetails[3].textContent = 'Consultar documentación';
         }
         
@@ -450,12 +471,25 @@
           detailP.textContent = licitacion.descripcion_resumida;
         }
         
+        // Actualizar badge de material en el título
+        const materialBadge = document.getElementById('material-badge');
+        if (materialBadge) {
+          if (materialesInox && materialesInox.length > 0) {
+            materialBadge.textContent = materialesInox[0];
+          } else {
+            materialBadge.textContent = 'Material no especificado';
+          }
+        }
+        
         // Actualizar materiales mencionados
         const materialesContainer = document.querySelector('.flex.flex-wrap.gap-2.pl-6');
         if (materialesContainer && materialesMencionados.length > 0) {
-          materialesContainer.innerHTML = materialesMencionados.slice(0, 10).map(mat => 
-            `<span class="px-3 py-1 bg-slate-50 border border-slate-200 rounded-md text-sm">${mat}</span>`
-          ).join('');
+          materialesContainer.innerHTML = materialesMencionados.slice(0, 10).map(mat => {
+            const isInox = mat.toLowerCase().includes('inoxidable') || mat.toLowerCase().includes('316') || mat.toLowerCase().includes('304');
+            return isInox ? 
+              `<span class="px-3 py-1.5 bg-blue-50 border border-blue-200 text-blue-700 rounded-md text-sm font-medium">${mat}</span>` :
+              `<span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-700 rounded-md text-sm">${mat}</span>`;
+          }).join('');
         }
         
         // Actualizar mención de acero inoxidable - buscar el span que dice "Mención de Acero Inoxidable"
