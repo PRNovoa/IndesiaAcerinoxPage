@@ -54,13 +54,37 @@
         const resultados = data.resultados;
         
         // Convertir a array y asignar fechas y distancias
-        const today = new Date();
         let licitaciones = Object.entries(resultados)
           .map(([id, lic], index) => {
-            // Generate consistent date for each tender
-            const daysOffset = 5 + (index * 3) % 60; // Creates dates from 5 to 65 days
-            const fecha = new Date(today.getTime() + daysOffset * 24 * 60 * 60 * 1000);
-            const fechaStr = fecha.toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
+            // Use the actual fecha from the tender data
+            let fechaStr = lic.fecha || 'Fecha no disponible';
+            // Parse the date string for sorting (basic parsing)
+            let fecha = new Date();
+            if (lic.fecha) {
+              // Try to parse dd-mm-yyyy format first
+              const dashMatch = lic.fecha.match(/(\d{2})-(\d{2})-(\d{4})/);
+              if (dashMatch) {
+                const day = parseInt(dashMatch[1]);
+                const month = parseInt(dashMatch[2]) - 1;
+                const year = parseInt(dashMatch[3]);
+                fecha = new Date(year, month, day);
+                // Convert to Spanish format for display
+                const monthNames = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 
+                                  'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+                fechaStr = `${day} de ${monthNames[month]} de ${year}`;
+              } else {
+                // Try to parse the Spanish date format (d de mes yyyy)
+                const dateMatch = lic.fecha.match(/(\d+)\s+de\s+(\w+)\s+(?:de\s+)?(\d+)/);
+                if (dateMatch) {
+                  const months = { enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5, 
+                                 julio: 6, agosto: 7, septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11 };
+                  const day = parseInt(dateMatch[1]);
+                  const month = months[dateMatch[2].toLowerCase()] || 0;
+                  const year = parseInt(dateMatch[3]);
+                  fecha = new Date(year, month, day);
+                }
+              }
+            }
             
             // Calculate distance from Madrid (simulated based on location)
             const region = (lic.region || '').toLowerCase();
@@ -103,16 +127,15 @@
                 // Filter by existing client potential (medio or alto)
                 return nivel === 'medio' || nivel === 'alto';
               case 'location':
-                // Filter by Spain location - very inclusive
-                const region = (lic.region || '').toLowerCase();
-                const pais = (lic.pais || '').toLowerCase();
-                // Show all that have some Spanish reference or are empty (assume Spain)
-                return !pais || pais === '' || pais.includes('españa') || pais.includes('spain') || 
-                       pais.includes('espana') || pais === 'es' || pais === 'españa' ||
-                       region.includes('españa') || region.includes('spain') || region.includes('madrid') || 
-                       region.includes('barcelona') || region.includes('valencia') || region.includes('sevilla') ||
-                       region.includes('bilbao') || region.includes('málaga') || region.includes('zaragoza') ||
-                       region !== '';
+                // Filter by Spain location - show all Spain-related tenders
+                const regionLoc = (lic.region || '').toLowerCase();
+                const paisLoc = (lic.pais || '').toLowerCase();
+                const ubicacion = (lic.ubicacion || '').toLowerCase();
+                // Show if Spain is mentioned anywhere or if location fields are present
+                return paisLoc.includes('españa') || paisLoc.includes('spain') || paisLoc.includes('espana') || 
+                       paisLoc.includes('málaga') || paisLoc.includes('malaga') || // Málaga is in Spain
+                       regionLoc !== '' || ubicacion.includes('españa') || ubicacion.includes('spain') ||
+                       paisLoc === '' || paisLoc === 'es';
               default:
                 return true;
             }

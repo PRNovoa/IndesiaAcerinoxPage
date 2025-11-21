@@ -407,7 +407,7 @@
         if (keyInfoSection) {
           const fontMediumElements = keyInfoSection.querySelectorAll('p.text-slate-900.font-medium');
           if (fontMediumElements.length >= 3) {
-            fontMediumElements[0].textContent = data.metadata?.fecha_generacion || '2025-11-20';
+            fontMediumElements[0].textContent = licitacion.fecha || 'Fecha no disponible';
             fontMediumElements[1].textContent = sector;
             fontMediumElements[2].textContent = region;
           }
